@@ -205,6 +205,7 @@
   .contact-box h2::after{display:none;}
   .contact-box p{color:var(--text-muted); max-width:48ch; margin:0 auto 26px;}
   .contact-links{display:flex; justify-content:center; flex-wrap:wrap; gap:12px;}
+  .copy-hint{font-family:var(--mono); font-size:12px; color:var(--accent); min-height:1.4em; margin:14px 0 0;}
   .foot-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; font-size:13px; color:var(--text-faint);}
   .foot-row a{color:var(--text-faint); text-decoration:none;}
   .foot-row a:hover{color:var(--accent);}
@@ -226,7 +227,7 @@
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
-      <a href="mailto:louis.halkin@gmail.com" class="cta">Say hi</a>
+      <a href="mailto:louis.halkin@gmail.com" class="cta email-link">Say hi</a>
     </div>
   </div>
 </nav>
@@ -253,7 +254,7 @@
           background in computer science and economics.
         </p>
         <div class="hero-links">
-          <a class="btn btn-primary" href="mailto:louis.halkin@gmail.com">✉ louis.halkin@gmail.com</a>
+          <a class="btn btn-primary email-link" href="mailto:louis.halkin@gmail.com">✉ louis.halkin@gmail.com</a>
           <a class="btn btn-ghost" href="https://github.com/lhalkin" target="_blank" rel="noopener">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
             github.com/lhalkin
@@ -263,6 +264,9 @@
           <span class="chip">Data &amp; AI</span>
           <span class="chip">Tech-Business Interface</span>
           <span class="chip">Consulting &amp; Analytics</span>
+          <span class="chip">Computer Science × Economics</span>
+          <span class="chip">Bilingual FR/EN</span>
+          <span class="chip">Public-Sector Experience</span>
           <span class="chip">Brussels, Belgium</span>
         </div>
       </div>
@@ -274,16 +278,19 @@
   <div class="wrap">
     <h2><span class="idx">01</span> About</h2>
     <p class="about-lead">
-      I move comfortably between <strong>writing the algorithm</strong> and <strong>explaining why it matters</strong> —
-      a habit built over eight years of tutoring economics and computer science, and a dual bachelor's that paired
-      software engineering with quantitative economics.
+      I hold <strong>two separate bachelor's degrees</strong> — Computer Science and Economic Sciences — completed
+      in parallel at ULB, and I'm now finishing a Master's in Computer Science on top of that. It's not a minor or
+      an elective: two full degrees, run side by side.
     </p>
     <p class="about-body">
-      My coursework spans machine learning, GPU computing, computational geometry and multi-agent systems, and my
-      dual bachelor's added econometrics, finance and probability alongside algorithms and databases. That
-      combination — technical depth plus an instinct for the business context around it — is what draws me toward
-      roles at the intersection of technology, data and decision-making: consulting, applied AI and analytics,
-      rather than a single narrow specialty.
+      That combination is the throughline of my work. The computer science side gave me machine learning, GPU
+      computing, computational geometry and multi-agent systems; the economics side gave me econometrics, finance
+      and probability. In practice it means I can build the model <em>and</em> read the business case for it —
+      explain a technical result to someone who doesn't code, or push back on a business assumption with actual
+      data. My Master's thesis, applying graph neural networks and knowledge graphs to a real prediction problem,
+      is the applied-research end of that same mix. It's this dual base — technical depth plus a business and
+      economic lens — that draws me toward roles at the intersection of technology, data and decision-making:
+      consulting, applied AI and analytics, rather than a single narrow specialty.
     </p>
   </div>
 </section>
@@ -362,8 +369,8 @@
 
     </div>
     <p class="tl-note" style="margin-top:22px; border:none; padding-top:0;">
-      Also: a Master's thesis on knowledge graphs &amp; GNNs, and a bioinformatics paper-reproduction study
-      (Python, PyTorch) — research-track work, listed under Education below rather than as a career direction.
+      Also: a bioinformatics paper-reproduction study (Python, PyTorch) — research-track work, listed under
+      Education below rather than as a career direction.
     </p>
   </div>
 </section>
@@ -441,13 +448,36 @@
       <h2><span class="idx">06</span> Get in touch</h2>
       <p>Open to internship and graduate opportunities in data, AI and technology consulting — happy to talk through fit over a call or email.</p>
       <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:louis.halkin@gmail.com">✉ Email me</a>
+        <a class="btn btn-primary email-link" href="mailto:louis.halkin@gmail.com">✉ Email me</a>
         <a class="btn btn-ghost" href="https://github.com/lhalkin" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
+      <p class="copy-hint" aria-live="polite"></p>
     </div>
     <div class="foot-row">
       <span>Louis Halkin — Brussels, Belgium</span>
-      <span><a href="mailto:louis.halkin@gmail.com">louis.halkin@gmail.com</a> · <a href="https://github.com/lhalkin" target="_blank" rel="noopener">github.com/lhalkin</a></span>
+      <span><a class="email-link" href="mailto:louis.halkin@gmail.com">louis.halkin@gmail.com</a> · <a href="https://github.com/lhalkin" target="_blank" rel="noopener">github.com/lhalkin</a></span>
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var EMAIL = 'louis.halkin@gmail.com';
+    var hint = document.querySelector('.copy-hint');
+    document.querySelectorAll('.email-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(EMAIL).then(function () {
+            var original = link.textContent;
+            link.dataset.original = link.dataset.original || original;
+            link.textContent = '✓ Copied — ' + EMAIL;
+            if (hint) { hint.textContent = 'Email address copied to your clipboard: ' + EMAIL; }
+            setTimeout(function () {
+              link.textContent = link.dataset.original;
+            }, 2200);
+          }).catch(function () {});
+        }
+      });
+    });
+  })();
+</script>
