@@ -1,0 +1,453 @@
+<title>Louis Halkin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #0a0d12;
+    --surface: #12161f;
+    --surface-2: #171c27;
+    --border: #232a38;
+    --border-soft: #1a2029;
+    --text: #e8ecf3;
+    --text-muted: #97a2b5;
+    --text-faint: #5c6678;
+    --accent: #35e0c9;
+    --accent-soft: rgba(53,224,201,0.12);
+    --accent-2: #a78bfa;
+    --accent-2-soft: rgba(167,139,250,0.12);
+    --accent-3: #ff8a65;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    --maxw: 920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent-soft); color:var(--accent);}
+
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* background texture */
+  .field{
+    position:fixed; inset:0; z-index:-1; overflow:hidden;
+    background:
+      radial-gradient(600px 400px at 12% -6%, rgba(53,224,201,0.10), transparent 60%),
+      radial-gradient(700px 500px at 108% 8%, rgba(167,139,250,0.09), transparent 60%),
+      var(--bg);
+  }
+  .field::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image: radial-gradient(900px 700px at 50% 0%, black, transparent 75%);
+  }
+
+  /* nav */
+  nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(10,13,18,0.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
+  .brand{display:flex; align-items:center; gap:9px; font-family:var(--mono); font-weight:600; font-size:14.5px; letter-spacing:0.01em; text-decoration:none;}
+  .brand svg{display:block;}
+  .navlinks{display:flex; align-items:center; gap:26px; font-family:var(--mono); font-size:13px;}
+  .navlinks a{text-decoration:none; color:var(--text-muted); transition:color .15s;}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks .cta{
+    color:var(--bg); background:var(--accent); padding:7px 14px; border-radius:5px; font-weight:600;
+  }
+  .navlinks .cta:hover{background:#4eeada;}
+  @media (max-width:640px){ .navlinks a:not(.cta){display:none;} }
+
+  section{padding:88px 0;}
+  section.tight{padding:64px 0;}
+  h2{
+    font-family:var(--mono); font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--accent); margin:0 0 34px; display:flex; align-items:center; gap:12px;
+  }
+  h2::after{content:""; flex:1; height:1px; background:var(--border);}
+  h2 .idx{color:var(--text-faint);}
+
+  /* hero */
+  .hero{padding:76px 0 70px; position:relative;}
+  .hero-grid{display:block;}
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; color:var(--accent-2); letter-spacing:0.06em;
+    display:flex; align-items:center; gap:8px; margin-bottom:18px;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+  h1{
+    font-family:var(--mono); font-weight:700; font-size:clamp(32px,5.4vw,52px); line-height:1.08;
+    margin:0 0 18px; letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h1 .accent-text{color:var(--accent);}
+  .tagline{
+    font-size:18px; color:var(--text-muted); max-width:56ch; margin:0 0 30px; text-wrap:pretty;
+  }
+  .tagline strong{color:var(--text); font-weight:600;}
+  .hero-links{display:flex; flex-wrap:wrap; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:13.5px; font-weight:600;
+    padding:11px 18px; border-radius:6px; text-decoration:none; border:1px solid var(--border); transition:all .15s;
+  }
+  .btn-primary{background:var(--accent); color:#06110e; border-color:var(--accent);}
+  .btn-primary:hover{background:#4eeada; transform:translateY(-1px);}
+  .btn-ghost{color:var(--text); background:var(--surface);}
+  .btn-ghost:hover{border-color:var(--accent-2); color:var(--accent-2);}
+
+  .hull-deco{position:absolute; right:-40px; top:10px; width:340px; height:340px; opacity:0.55; pointer-events:none;}
+  @media (max-width:900px){ .hull-deco{display:none;} }
+  @media (prefers-reduced-motion:no-preference){
+    .hull-deco .ring{ transform-origin:170px 170px; animation:spin 90s linear infinite; }
+    .hull-deco .ring:nth-child(2){ animation-duration:70s; animation-direction:reverse; }
+    .hull-deco .ring:nth-child(3){ animation-duration:130s; }
+  }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+
+  .focus-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+  .chip{
+    font-family:var(--mono); font-size:12.5px; padding:7px 12px; border-radius:999px;
+    border:1px solid var(--border); color:var(--text-muted); background:var(--surface);
+  }
+
+  /* about */
+  .about-lead{font-size:19px; color:var(--text); max-width:66ch; text-wrap:pretty; margin:0 0 20px;}
+  .about-lead strong{color:var(--accent);}
+  .about-body{color:var(--text-muted); max-width:66ch; margin:0;}
+
+  /* timeline */
+  .tl{border-left:1px solid var(--border); margin-left:6px;}
+  .tl-item{position:relative; padding:0 0 34px 28px;}
+  .tl-item:last-child{padding-bottom:2px;}
+  .tl-item::before{
+    content:""; position:absolute; left:-5.5px; top:4px; width:10px; height:10px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent);
+  }
+  .tl-item.muted::before{border-color:var(--text-faint);}
+  .tl-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px 16px;}
+  .tl-role{font-weight:600; font-size:16.5px;}
+  .tl-org{color:var(--accent-2); font-weight:500;}
+  .tl-date{font-family:var(--mono); font-size:12.5px; color:var(--text-faint); white-space:nowrap;}
+  .tl-desc{color:var(--text-muted); margin:8px 0 0; max-width:64ch;}
+  .tl-note{color:var(--text-faint); font-size:14.5px; margin-top:14px; padding-top:14px; border-top:1px dashed var(--border-soft);}
+
+  /* projects */
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:720px){ .proj-grid{grid-template-columns:1fr;} }
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:24px;
+    display:flex; flex-direction:column; gap:12px; transition:border-color .15s, transform .15s;
+  }
+  .card:hover{border-color:var(--accent-2); transform:translateY(-2px);}
+  .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+  .card-title{font-weight:600; font-size:16.5px; margin:0;}
+  .card-tag{font-family:var(--mono); font-size:11px; padding:4px 9px; border-radius:5px; white-space:nowrap;}
+  .tag-live{background:var(--accent-soft); color:var(--accent);}
+  .tag-thesis{background:var(--accent-2-soft); color:var(--accent-2);}
+  .tag-team{background:rgba(255,138,101,0.12); color:var(--accent-3);}
+  .card-desc{color:var(--text-muted); font-size:14.5px; margin:0; flex:1;}
+  .card-stack{display:flex; flex-wrap:wrap; gap:6px; font-family:var(--mono); font-size:11.5px; color:var(--text-faint);}
+  .card-stack span{border:1px solid var(--border-soft); padding:3px 8px; border-radius:4px;}
+  .card-link{font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none; display:inline-flex; align-items:center; gap:6px; margin-top:2px;}
+  .card-link:hover{text-decoration:underline;}
+
+  /* skills */
+  .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:560px;}
+  @media (max-width:480px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-group h3{
+    font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--text-faint); margin:0 0 12px; font-weight:600;
+  }
+  .skill-list{display:flex; flex-wrap:wrap; gap:7px;}
+  .skill-pill{font-size:13.5px; padding:6px 11px; border-radius:6px; background:var(--surface); border:1px solid var(--border); color:var(--text);}
+
+  /* education + languages */
+  .split{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
+  @media (max-width:800px){ .split{grid-template-columns:1fr; gap:56px;} }
+  .edu-item{margin-bottom:22px;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-degree{font-weight:600; font-size:15.5px;}
+  .edu-school{color:var(--text-muted); font-size:14px; margin-top:2px;}
+  .edu-date{font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-top:2px;}
+  .edu-note{color:var(--text-muted); font-size:13.5px; margin-top:6px; max-width:52ch;}
+
+  .lang-row{display:flex; align-items:center; gap:14px; margin-bottom:14px;}
+  .lang-name{width:76px; font-size:14px; flex-shrink:0;}
+  .lang-bar{flex:1; height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden; border:1px solid var(--border-soft);}
+  .lang-bar > span{display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+  .lang-level{font-family:var(--mono); font-size:11.5px; color:var(--text-faint); width:70px; text-align:right; flex-shrink:0;}
+
+  /* contact / footer */
+  footer{border-top:1px solid var(--border-soft); padding:60px 0 40px;}
+  .contact-box{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:42px; text-align:center; margin-bottom:44px;
+    background-image: radial-gradient(400px 200px at 50% 0%, var(--accent-soft), transparent 70%);
+  }
+  .contact-box h2{justify-content:center;}
+  .contact-box h2::after{display:none;}
+  .contact-box p{color:var(--text-muted); max-width:48ch; margin:0 auto 26px;}
+  .contact-links{display:flex; justify-content:center; flex-wrap:wrap; gap:12px;}
+  .foot-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; font-size:13px; color:var(--text-faint);}
+  .foot-row a{color:var(--text-faint); text-decoration:none;}
+  .foot-row a:hover{color:var(--accent);}
+</style>
+
+<div class="field"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <polygon points="10,1.5 18.5,7.2 15.5,17 4.5,17 1.5,7.2" stroke="#35e0c9" stroke-width="1.2"/>
+        <polygon points="10,5.5 14.7,8.8 13,14 7,14 5.3,8.8" stroke="#a78bfa" stroke-width="1.2"/>
+      </svg>
+      Louis Halkin
+    </a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="mailto:louis.halkin@gmail.com" class="cta">Say hi</a>
+    </div>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <svg class="hull-deco" viewBox="0 0 340 340" fill="none">
+      <polygon class="ring" points="170,20 300,95 300,245 170,320 40,245 40,95" stroke="#35e0c9" stroke-width="1" opacity="0.8"/>
+      <polygon class="ring" points="170,60 260,110 260,230 170,280 80,230 80,110" stroke="#a78bfa" stroke-width="1" opacity="0.8"/>
+      <polygon class="ring" points="170,100 220,130 220,210 170,240 120,210 120,130" stroke="#ff8a65" stroke-width="1" opacity="0.8"/>
+      <circle cx="170" cy="170" r="3" fill="#35e0c9"/>
+    </svg>
+
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS &amp; GRADUATE ROLES · 2026</div>
+        <h1>Louis Halkin —<br>Computer Science <span class="accent-text">&amp; Data-Driven Business</span></h1>
+        <p class="tagline">
+          M.Sc. Computer Science candidate at <strong>ULB</strong>, working at the intersection of
+          <strong>data, technology and business decisions.</strong> Incoming Workforce Forecasting &amp;
+          Project Management intern at the Belgian Federal Public Service (BOSA, Jul–Oct 2026); dual
+          background in computer science and economics.
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="mailto:louis.halkin@gmail.com">✉ louis.halkin@gmail.com</a>
+          <a class="btn btn-ghost" href="https://github.com/lhalkin" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            github.com/lhalkin
+          </a>
+        </div>
+        <div class="focus-row">
+          <span class="chip">Data &amp; AI</span>
+          <span class="chip">Tech-Business Interface</span>
+          <span class="chip">Consulting &amp; Analytics</span>
+          <span class="chip">Brussels, Belgium</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="tight">
+  <div class="wrap">
+    <h2><span class="idx">01</span> About</h2>
+    <p class="about-lead">
+      I move comfortably between <strong>writing the algorithm</strong> and <strong>explaining why it matters</strong> —
+      a habit built over eight years of tutoring economics and computer science, and a dual bachelor's that paired
+      software engineering with quantitative economics.
+    </p>
+    <p class="about-body">
+      My coursework spans machine learning, GPU computing, computational geometry and multi-agent systems, and my
+      dual bachelor's added econometrics, finance and probability alongside algorithms and databases. That
+      combination — technical depth plus an instinct for the business context around it — is what draws me toward
+      roles at the intersection of technology, data and decision-making: consulting, applied AI and analytics,
+      rather than a single narrow specialty.
+    </p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="idx">02</span> Experience</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-head">
+          <div><span class="tl-role">Workforce Forecasting / Project Management Intern</span> · <span class="tl-org">Belgian Federal Public Service — BOSA</span></div>
+          <div class="tl-date">Jul — Oct 2026</div>
+        </div>
+        <p class="tl-desc">
+          Designing a workforce forecasting tool for strategic HR planning across the Belgian federal administration —
+          building and validating statistical and machine-learning models on longitudinal recruitment, departure and
+          mobility data. Presenting results to internal stakeholders and running the project independently through
+          structured two-week development cycles, with technical documentation for non-technical audiences.
+        </p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head">
+          <div><span class="tl-role">Private Tutor</span> · <span class="tl-org">Superprof &amp; MySherpa</span> — Economics, Mathematics, Computer Science</div>
+          <div class="tl-date">2017 — Present</div>
+        </div>
+        <p class="tl-desc">
+          Nine years of independently designing and delivering tailored lessons for secondary-school and university
+          students. Diagnose knowledge gaps, adapt explanations to each learner, and manage scheduling and long-term
+          progress across multiple students and subjects at once.
+        </p>
+      </div>
+      <div class="tl-item muted">
+        <div class="tl-head">
+          <div><span class="tl-role">Sales Assistant, Kitchen Assistant &amp; Delivery Driver</span> · <span class="tl-org">Retail, Hospitality &amp; Delivery Roles</span></div>
+          <div class="tl-date">2023 — 2025</div>
+        </div>
+        <p class="tl-desc">Sales, payments, inventory and customer requests across retail, hospitality and delivery roles in Belgium and the Netherlands — customer-facing work built on reliability and clear communication.</p>
+      </div>
+      <p class="tl-note">Also: fifteen years in scouting, including scout leader &amp; health coordinator (2022–2023), and a humanitarian building project in South Africa.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2><span class="idx">03</span> Selected projects</h2>
+    <div class="proj-grid">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-title">Convex Onion Layers — Chazelle's Algorithm</p>
+          <span class="card-tag tag-live">interactive</span>
+        </div>
+        <p class="card-desc">
+          Browser-based visualization of Bernard Chazelle's 1985 algorithm for peeling convex layers from a planar
+          point set — the O(n log n) upper/lower hull-graph construction, plus a simplified Graham-scan version for
+          comparison. Built with a randomized regression test suite validating results against independent reference
+          implementations.
+        </p>
+        <div class="card-stack"><span>JavaScript</span><span>Canvas</span><span>Computational geometry</span></div>
+        <a class="card-link" href="https://github.com/lhalkin/INFO-F-420" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-title">CUDA-Accelerated 3D Reconstruction</p>
+          <span class="card-tag tag-team">~260× speed-up</span>
+        </div>
+        <p class="card-desc">
+          GPU-parallelized 3D reconstruction pipeline built for a computer architecture course, cutting runtime from
+          ~210s to ~0.8s. Alongside a separate project generating LLVM intermediate representation for a compiler
+          front-end.
+        </p>
+        <div class="card-stack"><span>CUDA</span><span>C++</span><span>GPU computing</span></div>
+      </div>
+
+    </div>
+    <p class="tl-note" style="margin-top:22px; border:none; padding-top:0;">
+      Also: a Master's thesis on knowledge graphs &amp; GNNs, and a bioinformatics paper-reproduction study
+      (Python, PyTorch) — research-track work, listed under Education below rather than as a career direction.
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="tight">
+  <div class="wrap">
+    <h2><span class="idx">04</span> Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Languages &amp; tools</h3>
+        <div class="skill-list">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">C / C++</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">CUDA</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Linux</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Applied domains</h3>
+        <div class="skill-list">
+          <span class="skill-pill">Machine Learning</span>
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">Data Analysis</span>
+          <span class="skill-pill">Computational Geometry</span>
+        </div>
+      </div>
+    </div>
+    <p class="tl-note" style="margin-top:22px; border:none; padding-top:0;">
+      Also: 30 ECTS of graduate coursework in cybersecurity (network security, cryptography, secure systems) and
+      applied bioinformatics (PyTorch, GNNs) — breadth from coursework and research, not a career direction.
+    </p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2><span class="idx">05</span> Education &amp; languages</h2>
+    <div class="split">
+      <div>
+        <div class="edu-item">
+          <div class="edu-degree">M.Sc. Computer Science</div>
+          <div class="edu-school">Université Libre de Bruxelles (ULB)</div>
+          <div class="edu-date">2025 — Present</div>
+          <p class="edu-note">Thesis: "Knowledge Graphs and Graph Neural Networks for Synthetic Lethality Prediction in Cancer" — benchmarking predictive models and negative-sample selection. Coursework: machine learning, GPU computing, computational geometry, multi-agent systems, computer architecture.</p>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.Sc. Computer Science</div>
+          <div class="edu-school">Université Libre de Bruxelles (ULB)</div>
+          <div class="edu-date">2019 — 2023</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.Sc. Economic Sciences</div>
+          <div class="edu-school">Solvay Brussels School of Economics and Management (ULB)</div>
+          <div class="edu-date">2020 — 2023</div>
+          <p class="edu-note">Two separate bachelor's degrees combining software engineering, quantitative methods and economic analysis — econometrics, finance, probability, algorithms, databases, networks.</p>
+        </div>
+        <p class="tl-note" style="border:none; padding-top:0;">Also: 30 ECTS of graduate coursework in cybersecurity (ULB, 2023–2024) — information security, network security, cryptography and secure systems.</p>
+      </div>
+      <div>
+        <div class="lang-row"><span class="lang-name">French</span><div class="lang-bar"><span style="width:100%"></span></div><span class="lang-level">Native</span></div>
+        <div class="lang-row"><span class="lang-name">English</span><div class="lang-bar"><span style="width:85%"></span></div><span class="lang-level">C1</span></div>
+        <div class="lang-row"><span class="lang-name">German</span><div class="lang-bar"><span style="width:60%"></span></div><span class="lang-level">B2</span></div>
+        <div class="lang-row"><span class="lang-name">Dutch</span><div class="lang-bar"><span style="width:25%"></span></div><span class="lang-level">A1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-box">
+      <h2><span class="idx">06</span> Get in touch</h2>
+      <p>Open to internship and graduate opportunities in data, AI and technology consulting — happy to talk through fit over a call or email.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:louis.halkin@gmail.com">✉ Email me</a>
+        <a class="btn btn-ghost" href="https://github.com/lhalkin" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="foot-row">
+      <span>Louis Halkin — Brussels, Belgium</span>
+      <span><a href="mailto:louis.halkin@gmail.com">louis.halkin@gmail.com</a> · <a href="https://github.com/lhalkin" target="_blank" rel="noopener">github.com/lhalkin</a></span>
+    </div>
+  </div>
+</footer>
