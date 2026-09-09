@@ -149,8 +149,9 @@
   .tl-note{color:var(--text-faint); font-size:14.5px; margin-top:14px; padding-top:14px; border-top:1px dashed var(--border-soft);}
 
   /* projects */
-  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
-  @media (max-width:720px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:980px){ .proj-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .proj-grid{grid-template-columns:1fr;} }
   .card{
     background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:24px;
     display:flex; flex-direction:column; gap:12px; transition:border-color .15s, transform .15s;
@@ -245,7 +246,7 @@
 
     <div class="hero-grid">
       <div>
-        <div class="eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS &amp; GRADUATE ROLES · 2026</div>
+        <div class="eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS &amp; GRADUATE ROLES · 2027</div>
         <h1>Louis Halkin —<br>Computer Science <span class="accent-text">&amp; Data-Driven Business</span></h1>
         <p class="tagline">
           M.Sc. Computer Science candidate at <strong>ULB</strong>, working at the intersection of
@@ -287,10 +288,11 @@
       computing, computational geometry and multi-agent systems; the economics side gave me econometrics, finance
       and probability. In practice it means I can build the model <em>and</em> read the business case for it —
       explain a technical result to someone who doesn't code, or push back on a business assumption with actual
-      data. My Master's thesis, applying graph neural networks and knowledge graphs to a real prediction problem,
-      is the applied-research end of that same mix. It's this dual base — technical depth plus a business and
-      economic lens — that draws me toward roles at the intersection of technology, data and decision-making:
-      consulting, applied AI and analytics, rather than a single narrow specialty.
+      data. That translation instinct is also something I've trained for nine years as a private tutor, turning
+      dense technical and economic material into something a complete beginner can actually follow. It's this dual
+      base — technical depth plus a business and economic lens — that draws me toward roles at the intersection
+      of technology, data and decision-making: consulting, applied AI and analytics, rather than a single narrow
+      specialty.
     </p>
   </div>
 </section>
@@ -367,11 +369,20 @@
         <div class="card-stack"><span>CUDA</span><span>C++</span><span>GPU computing</span></div>
       </div>
 
+      <div class="card">
+        <div class="card-top">
+          <p class="card-title">Knowledge Graphs &amp; GNNs for Cancer Target Prediction</p>
+          <span class="card-tag tag-thesis">master's thesis</span>
+        </div>
+        <p class="card-desc">
+          Applying graph neural networks and knowledge graphs to predict synthetic lethality in cancer — the
+          applied-research end of the same technical-and-business mix: build the predictive model, then reason
+          about what it actually means for target selection.
+        </p>
+        <div class="card-stack"><span>PyTorch</span><span>Graph Neural Networks</span><span>Knowledge Graphs</span></div>
+      </div>
+
     </div>
-    <p class="tl-note" style="margin-top:22px; border:none; padding-top:0;">
-      Also: a bioinformatics paper-reproduction study (Python, PyTorch) — research-track work, listed under
-      Education below rather than as a career direction.
-    </p>
   </div>
 </section>
 
@@ -401,10 +412,6 @@
         </div>
       </div>
     </div>
-    <p class="tl-note" style="margin-top:22px; border:none; padding-top:0;">
-      Also: 30 ECTS of graduate coursework in cybersecurity (network security, cryptography, secure systems) and
-      applied bioinformatics (PyTorch, GNNs) — breadth from coursework and research, not a career direction.
-    </p>
   </div>
 </section>
 
